@@ -16,22 +16,23 @@ import kcommon.geometry.Vector2D;
 
 public class QuadTree {
 	private int maxChildren;
-	private int maxDepth = 4;
+	private int maxDepth;
 	private int depth;
 	private Rectangle dimensions;
 	private QuadTree[] nodes;
 	private List<IQuadElement> elements;
 
-	public QuadTree(float x, float y, float width, float height, int maxChildren) {
-		this(x, y, width, height, 0, maxChildren);
+	public QuadTree(float x, float y, float width, float height, int maxChildren, int maxDepth) {
+		this(x, y, width, height, 0, maxChildren, maxDepth);
 	}
 	
-	private QuadTree(float x, float y, float width, float height, int depth, int maxChildren) {
+	private QuadTree(float x, float y, float width, float height, int depth, int maxChildren, int maxDepth) {
 		elements = new ArrayList<IQuadElement>();
 		dimensions = new Rectangle(x, y, width, height);
 		nodes = null;
 		this.depth = depth;
 		this.maxChildren = maxChildren;
+		this.maxDepth = maxDepth;
 	}
 	
 	public void add(IQuadElement body) {

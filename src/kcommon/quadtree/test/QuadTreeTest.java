@@ -23,7 +23,7 @@ public class QuadTreeTest extends Test {
 	}
 	
 	private void boundaryTest() {
-		QuadTree q = new QuadTree(0, 0, 5, 5, 4);
+		QuadTree q = new QuadTree(0, 0, 5, 5, 4, 4);
 		
 		TestQuadElement body = new TestQuadElement(0, 0, 2, 2);
 		
@@ -56,7 +56,7 @@ public class QuadTreeTest extends Test {
 	}
 	
 	private void bodyIntersectionTest() {
-		QuadTree q = new QuadTree(0, 0, 5, 5, 4);
+		QuadTree q = new QuadTree(0, 0, 5, 5, 4, 4);
 		
 		TestQuadElement body1 = new TestQuadElement(2, 0, 2, 2); // node 0
 		TestQuadElement body2 = new TestQuadElement(0, 0, 2, 2); // node 1
@@ -99,7 +99,7 @@ public class QuadTreeTest extends Test {
 	}
 	
 	private void fractionalPositionTest() {
-		QuadTree q = new QuadTree(0, 0, 2, 2, 4);
+		QuadTree q = new QuadTree(0, 0, 2, 2, 4, 4);
 		
 		q.add(new TestQuadElement(1, 0, 1, 1));
 		q.add(new TestQuadElement(1, 1, 1, 1));
