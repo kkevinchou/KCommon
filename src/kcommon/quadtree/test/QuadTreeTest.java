@@ -6,7 +6,7 @@ import java.util.List;
 import kcommon.geometry.Vector2D;
 import kcommon.quadtree.IQuadElement;
 import kcommon.quadtree.QuadTree;
-import kcommon.quadtree.Test;
+import kcommon.unittests.Test;
 
 public class QuadTreeTest extends Test {
 

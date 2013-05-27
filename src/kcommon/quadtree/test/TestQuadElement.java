@@ -17,7 +17,7 @@ public class TestQuadElement implements IQuadElement {
 	}
 	
 	public void setPosition(Vector2D position) {
-		rect.x = position.getX();
-		rect.y = position.getY();
+		rect.setX(position.getX());
+		rect.setY(position.getY());
 	}
 }

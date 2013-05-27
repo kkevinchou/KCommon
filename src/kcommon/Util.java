@@ -2,7 +2,7 @@ package kcommon;
 
 import kcommon.Settings;
 
-public abstract class Utility {
+public abstract class Util {
     public static long getTick() {
         return System.currentTimeMillis();
     }

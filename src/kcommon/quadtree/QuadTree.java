@@ -18,7 +18,7 @@ public class QuadTree {
 	private int maxChildren;
 	private int maxDepth = 4;
 	private int depth;
-	private Rectangle dimension;
+	private Rectangle dimensions;
 	private QuadTree[] nodes;
 	private List<IQuadElement> elements;
 
@@ -28,7 +28,7 @@ public class QuadTree {
 	
 	private QuadTree(float x, float y, float width, float height, int depth, int maxChildren) {
 		elements = new ArrayList<IQuadElement>();
-		dimension = new Rectangle(x, y, width, height);
+		dimensions = new Rectangle(x, y, width, height);
 		nodes = null;
 		this.depth = depth;
 		this.maxChildren = maxChildren;
@@ -53,11 +53,11 @@ public class QuadTree {
 	public boolean intersects(IQuadElement body) {
 		Rectangle boundingBox = body.getAABoundingBox();
 		
-		Vector2D boxTopLeft = new Vector2D(boundingBox.x, boundingBox.y);
-		Vector2D boxBtmRight = new Vector2D(boundingBox.x + boundingBox.width - 1, boundingBox.y + boundingBox.height - 1);
+		Vector2D boxTopLeft = new Vector2D(boundingBox.getX(), boundingBox.getY());
+		Vector2D boxBtmRight = new Vector2D(boundingBox.getX() + boundingBox.getWidth() - 1, boundingBox.getY() + boundingBox.getHeight() - 1);
 		
-		Vector2D treeTopLeft = new Vector2D(dimension.x, dimension.y);
-		Vector2D treeBtmRight = new Vector2D(dimension.x + dimension.width - 1, dimension.y + dimension.height - 1);
+		Vector2D treeTopLeft = new Vector2D(dimensions.getX(), dimensions.getY());
+		Vector2D treeBtmRight = new Vector2D(dimensions.getX() + dimensions.getWidth() - 1, dimensions.getY() + dimensions.getHeight() - 1);
 		
 		if (boxTopLeft.getX() >= treeBtmRight.getX() + 1) {
 			return false;
@@ -105,15 +105,15 @@ public class QuadTree {
 	public void split() {
 		nodes = new QuadTree[4];
 		
-		float childWidth = dimension.width / 2;
-		float childHeight = dimension.height / 2;
+		float childWidth = dimensions.getWidth() / 2;
+		float childHeight = dimensions.getHeight() / 2;
 		int childDepth = depth + 1;
 		
-		nodes[1] = new QuadTree(dimension.x, dimension.y, childWidth, childHeight, childDepth, maxChildren);
-		nodes[0] = new QuadTree(dimension.x + childWidth, dimension.y, dimension.width - childWidth, childHeight, childDepth, maxChildren);
+		nodes[1] = new QuadTree(dimensions.getX(), dimensions.getY(), childWidth, childHeight, childDepth, maxChildren);
+		nodes[0] = new QuadTree(dimensions.getX() + childWidth, dimensions.getY(), dimensions.getWidth() - childWidth, childHeight, childDepth, maxChildren);
 		
-		nodes[2] = new QuadTree(dimension.x, dimension.y + childHeight, childWidth, dimension.height - childHeight, childDepth, maxChildren);
-		nodes[3] = new QuadTree(dimension.x + childWidth, dimension.y + childHeight, dimension.width - childWidth, dimension.height - childHeight, childDepth, maxChildren);
+		nodes[2] = new QuadTree(dimensions.getX(), dimensions.getY() + childHeight, childWidth, dimensions.getHeight() - childHeight, childDepth, maxChildren);
+		nodes[3] = new QuadTree(dimensions.getX() + childWidth, dimensions.getY() + childHeight, dimensions.getWidth() - childWidth, dimensions.getHeight() - childHeight, childDepth, maxChildren);
 		
 		for (IQuadElement element : elements) {
 			for (int i = 0; i < 4; i++) {

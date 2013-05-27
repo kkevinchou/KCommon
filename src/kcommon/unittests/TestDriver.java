@@ -3,7 +3,6 @@ package kcommon.unittests;
 import java.util.ArrayList;
 import java.util.List;
 
-import kcommon.quadtree.Test;
 import kcommon.quadtree.test.QuadTreeTest;
 
 public class TestDriver {
