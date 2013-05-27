@@ -4,7 +4,7 @@ import kcommon.geometry.Rectangle;
 import kcommon.geometry.Vector2D;
 import kcommon.quadtree.IQuadElement;
 
-public class TestQuadElement implements IQuadElement {
+public final class TestQuadElement implements IQuadElement {
 	private Rectangle rect;
 	
 	public TestQuadElement(float x, float y, float width, float height) {

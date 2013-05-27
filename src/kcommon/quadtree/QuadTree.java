@@ -14,7 +14,7 @@ import kcommon.geometry.Vector2D;
  * [2][3]
  */
 
-public class QuadTree {
+public final class QuadTree {
 	private int maxChildren;
 	private int maxDepth;
 	private int depth;

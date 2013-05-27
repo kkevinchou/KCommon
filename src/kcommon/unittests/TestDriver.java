@@ -5,7 +5,7 @@ import java.util.List;
 
 import kcommon.quadtree.test.QuadTreeTest;
 
-public class TestDriver {
+public final class TestDriver {
 	public static void main(String[] args) {
 		List<Test> tests = new ArrayList<Test>();
 		

@@ -75,23 +75,23 @@ public final class Vector2D {
 		return false;
 	}
 	
-	public final Vector2D add(Vector2D vector) {
+	public Vector2D add(Vector2D vector) {
 		return new Vector2D(this.x + vector.getX(), this.y + vector.getY());
 	}
 	
-	public final Vector2D sub(Vector2D vector) {
+	public Vector2D sub(Vector2D vector) {
 		return new Vector2D(this.x - vector.getX(), this.y - vector.getY());
 	}
 	
-	public final Vector2D mult(float scalar) {
+	public  Vector2D mult(float scalar) {
 		return new Vector2D(this.x * scalar, this.y * scalar);
 	}
 	
-	public final Vector2D div(float scalar) {
+	public Vector2D div(float scalar) {
 		return new Vector2D(this.x / scalar, this.y / scalar);
 	}
 	
-	public final Vector2D normalize() {
+	public Vector2D normalize() {
 		float magnitude = magnitude();
 		if (magnitude == 0) {
 			System.out.println("Error: Attempted to normalize a 0 magnitude vector");

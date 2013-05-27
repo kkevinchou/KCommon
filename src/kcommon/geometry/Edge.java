@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Edge {
+public final class Edge {
 	private List<Vector2D> points;
 	
 	public Edge(Vector2D a, Vector2D b) {
