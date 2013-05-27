@@ -20,29 +20,21 @@ public class QuadTree {
 	private int depth;
 	private Rectangle dimension;
 	private QuadTree[] nodes;
-	private List<QuadElement> elements;
+	private List<IQuadElement> elements;
 
 	public QuadTree(float x, float y, float width, float height, int maxChildren) {
 		this(x, y, width, height, 0, maxChildren);
 	}
 	
 	private QuadTree(float x, float y, float width, float height, int depth, int maxChildren) {
-		elements = new ArrayList<QuadElement>();
+		elements = new ArrayList<IQuadElement>();
 		dimension = new Rectangle(x, y, width, height);
 		nodes = null;
 		this.depth = depth;
 		this.maxChildren = maxChildren;
 	}
 	
-	public Rectangle getDimension() {
-		return dimension;
-	}
-	
-	public QuadTree[] getNodes() {
-		return nodes;
-	}
-	
-	public void add(QuadElement body) {
+	public void add(IQuadElement body) {
 		if (nodes == null) {
 			elements.add(body);
 		} else {
@@ -58,7 +50,7 @@ public class QuadTree {
 		}
 	}
 	
-	public boolean intersects(QuadElement body) {
+	public boolean intersects(IQuadElement body) {
 		Rectangle boundingBox = body.getAABoundingBox();
 		
 		Vector2D boxTopLeft = new Vector2D(boundingBox.x, boundingBox.y);
@@ -86,8 +78,8 @@ public class QuadTree {
 		return true;
 	}
 	
-	private Set<QuadElement> getIntersectionCandidatesHelper(QuadElement body) {
-		Set<QuadElement> result = new LinkedHashSet<QuadElement>();
+	private Set<IQuadElement> getIntersectionCandidatesHelper(IQuadElement body) {
+		Set<IQuadElement> result = new LinkedHashSet<IQuadElement>();
 		
 		if (nodes == null) {
 			result.addAll(elements);
@@ -103,8 +95,8 @@ public class QuadTree {
 		return result;
 	}
 	
-	public List<QuadElement> getIntersectionCandidates(QuadElement body) {
-		List<QuadElement> result = new ArrayList<QuadElement>();
+	public List<IQuadElement> getIntersectionCandidates(IQuadElement body) {
+		List<IQuadElement> result = new ArrayList<IQuadElement>();
 		result.addAll(getIntersectionCandidatesHelper(body));
 		
 		return result;
@@ -123,7 +115,7 @@ public class QuadTree {
 		nodes[2] = new QuadTree(dimension.x, dimension.y + childHeight, childWidth, dimension.height - childHeight, childDepth, maxChildren);
 		nodes[3] = new QuadTree(dimension.x + childWidth, dimension.y + childHeight, dimension.width - childWidth, dimension.height - childHeight, childDepth, maxChildren);
 		
-		for (QuadElement element : elements) {
+		for (IQuadElement element : elements) {
 			for (int i = 0; i < 4; i++) {
 				if (nodes[i].intersects(element)) {
 					nodes[i].add(element);

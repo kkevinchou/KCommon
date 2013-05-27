@@ -1,11 +1,12 @@
-package kcommon.quadtree;
+package kcommon.quadtree.test;
 
 import java.util.List;
 
-import kcommon.Test;
 
 import kcommon.geometry.Vector2D;
+import kcommon.quadtree.IQuadElement;
 import kcommon.quadtree.QuadTree;
+import kcommon.quadtree.Test;
 
 public class QuadTreeTest extends Test {
 
@@ -24,7 +25,7 @@ public class QuadTreeTest extends Test {
 	private void boundaryTest() {
 		QuadTree q = new QuadTree(0, 0, 5, 5, 4);
 		
-		PolyBody body = new PolyBody(0, 0, 2, 2);
+		TestQuadElement body = new TestQuadElement(0, 0, 2, 2);
 		
 		body.setPosition(new Vector2D(0, 0));
 		tAssert(q.intersects(body), true);
@@ -57,11 +58,11 @@ public class QuadTreeTest extends Test {
 	private void bodyIntersectionTest() {
 		QuadTree q = new QuadTree(0, 0, 5, 5, 4);
 		
-		PolyBody body1 = new PolyBody(2, 0, 2, 2); // node 0
-		PolyBody body2 = new PolyBody(0, 0, 2, 2); // node 1
-		PolyBody body3 = new PolyBody(0, 2, 2, 2); // node 2
-		PolyBody body4 = new PolyBody(3, 3, 2, 2); // node 3
-		PolyBody body5 = new PolyBody(3, 3, 2, 2); // node 3
+		TestQuadElement body1 = new TestQuadElement(2, 0, 2, 2); // node 0
+		TestQuadElement body2 = new TestQuadElement(0, 0, 2, 2); // node 1
+		TestQuadElement body3 = new TestQuadElement(0, 2, 2, 2); // node 2
+		TestQuadElement body4 = new TestQuadElement(3, 3, 2, 2); // node 3
+		TestQuadElement body5 = new TestQuadElement(3, 3, 2, 2); // node 3
 		
 		q.add(body1);
 		q.add(body2);
@@ -69,8 +70,8 @@ public class QuadTreeTest extends Test {
 		q.add(body4);
 		q.add(body5);
 		
-		PolyBody testBody = new PolyBody(0, 0, 2, 2); // node 0
-		List<RigidBody> candidates;
+		TestQuadElement testBody = new TestQuadElement(0, 0, 2, 2); // node 0
+		List<IQuadElement> candidates;
 		
 		testBody.setPosition(new Vector2D(3, 0));
 		candidates = q.getIntersectionCandidates(testBody);
@@ -100,15 +101,15 @@ public class QuadTreeTest extends Test {
 	private void fractionalPositionTest() {
 		QuadTree q = new QuadTree(0, 0, 2, 2, 4);
 		
-		q.add(new PolyBody(1, 0, 1, 1));
-		q.add(new PolyBody(1, 1, 1, 1));
-		q.add(new PolyBody(1, 1, 1, 1));
-		q.add(new PolyBody(1, 1, 1, 1));
-		q.add(new PolyBody(1, 1, 1, 1));
+		q.add(new TestQuadElement(1, 0, 1, 1));
+		q.add(new TestQuadElement(1, 1, 1, 1));
+		q.add(new TestQuadElement(1, 1, 1, 1));
+		q.add(new TestQuadElement(1, 1, 1, 1));
+		q.add(new TestQuadElement(1, 1, 1, 1));
 		
-		PolyBody testBody = new PolyBody(0.5f, 0, 1, 1);
+		TestQuadElement testBody = new TestQuadElement(0.5f, 0, 1, 1);
 		
-		List<RigidBody> candidates = q.getIntersectionCandidates(testBody);
+		List<IQuadElement> candidates = q.getIntersectionCandidates(testBody);
 		tAssert(candidates.size(), 1);
 	}
 	

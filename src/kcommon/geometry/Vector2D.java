@@ -61,6 +61,7 @@ public final class Vector2D {
 		return dot(v.normalize());
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof Vector2D)) {
 			return false;

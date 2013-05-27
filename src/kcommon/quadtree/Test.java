@@ -1,4 +1,4 @@
-package kcommon;
+package kcommon.quadtree;
 
 public abstract class Test {
 	private int assertionNumber;
