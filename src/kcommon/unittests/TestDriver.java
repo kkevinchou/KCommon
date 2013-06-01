@@ -3,6 +3,7 @@ package kcommon.unittests;
 import java.util.ArrayList;
 import java.util.List;
 
+import kcommon.datastructures.test.DataStructuresTest;
 import kcommon.quadtree.test.QuadTreeTest;
 
 public final class TestDriver {
@@ -10,8 +11,10 @@ public final class TestDriver {
 		List<Test> tests = new ArrayList<Test>();
 		
 		Test a = new QuadTreeTest();
+		Test b = new DataStructuresTest();
 		
 		tests.add(a);
+		tests.add(b);
 		
 		System.out.println("Starting Tests");
 		System.out.println("*****************");

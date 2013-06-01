@@ -110,11 +110,11 @@ public final class QuadTree {
 		float childHeight = dimensions.getHeight() / 2;
 		int childDepth = depth + 1;
 		
-		nodes[1] = new QuadTree(dimensions.getX(), dimensions.getY(), childWidth, childHeight, childDepth, maxChildren);
-		nodes[0] = new QuadTree(dimensions.getX() + childWidth, dimensions.getY(), dimensions.getWidth() - childWidth, childHeight, childDepth, maxChildren);
+		nodes[1] = new QuadTree(dimensions.getX(), dimensions.getY(), childWidth, childHeight, childDepth, maxChildren, maxDepth);
+		nodes[0] = new QuadTree(dimensions.getX() + childWidth, dimensions.getY(), dimensions.getWidth() - childWidth, childHeight, childDepth, maxChildren, maxDepth);
 		
-		nodes[2] = new QuadTree(dimensions.getX(), dimensions.getY() + childHeight, childWidth, dimensions.getHeight() - childHeight, childDepth, maxChildren);
-		nodes[3] = new QuadTree(dimensions.getX() + childWidth, dimensions.getY() + childHeight, dimensions.getWidth() - childWidth, dimensions.getHeight() - childHeight, childDepth, maxChildren);
+		nodes[2] = new QuadTree(dimensions.getX(), dimensions.getY() + childHeight, childWidth, dimensions.getHeight() - childHeight, childDepth, maxChildren, maxDepth);
+		nodes[3] = new QuadTree(dimensions.getX() + childWidth, dimensions.getY() + childHeight, dimensions.getWidth() - childWidth, dimensions.getHeight() - childHeight, childDepth, maxChildren, maxDepth);
 		
 		for (IQuadElement element : elements) {
 			for (int i = 0; i < 4; i++) {
