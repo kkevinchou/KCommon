@@ -13,7 +13,7 @@ public final class SlidingList<T> {
 		elements = new ArrayList<T>(size);
 	}
 
-	public List<T> get() {
+	public List<T> getElements() {
 		return Collections.unmodifiableList(elements);
 	}
 	

@@ -20,20 +20,20 @@ public class DataStructuresTest extends Test {
 		
 		list.push(0);
 		
-		tAssert(list.get().get(0), 0);
-		tAssert(list.get().size(), 1);
+		tAssert(list.getElements().get(0), 0);
+		tAssert(list.getElements().size(), 1);
 		
 		list.push(1);
 		
 
-		tAssert(list.get().get(1), 1);
-		tAssert(list.get().size(), 2);
+		tAssert(list.getElements().get(1), 1);
+		tAssert(list.getElements().size(), 2);
 		
 		list.push(2);
 		
-		tAssert(list.get().get(0), 1);
-		tAssert(list.get().get(1), 2);
-		tAssert(list.get().size(), 2);
+		tAssert(list.getElements().get(0), 1);
+		tAssert(list.getElements().get(1), 2);
+		tAssert(list.getElements().size(), 2);
 	}
 	
 	// TODO: Test adding bodies outside of QuadTree range
